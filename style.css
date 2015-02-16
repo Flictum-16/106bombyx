@@ -1,0 +1,17 @@
+body 
+{
+	height: 700px;
+	background:	url('Bombyx.jpg') no-repeat;
+	background-position: right top;
+}
+
+table 
+{
+	float : left;
+	margin-left : 5px;
+}
+
+td
+{
+	font-size: 12px;
+}

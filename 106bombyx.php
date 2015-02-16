@@ -23,9 +23,8 @@
 				var chart_bombyx;
 				$(document).ready(function () {
 					chart_bombyx = new Highcharts.Chart({
-						<?php if (isset($_POST['Value_x']) && $error != 1) { ?>
-						{ 
-    						$('#chart').highcharts({
+						<?php if (isset($_POST['Value_i']) && $error != 1) 
+							{ ?>
         						chart: 
         						{
         							renderTo: 'container',
@@ -33,7 +32,7 @@
         						},
         						title: 
         						{
-            						text: 'Courbe du nombre d\'individu en fonction de génération'
+            						text: 'Courbe du nombre d\'individu en fonction du taux de croissance'
         						},
         						xAxis: 
         						{
@@ -52,26 +51,22 @@
 										text: 'Population de bombyx'
 									}
         						},
-        						series: [
-        						{
+        						series: [{
             						name: 'Nbr_Bombyx',
 									data: [ 
 										<?php
 										
-										$min = $_POST['min'];
-										$max = $_POST['max'];
-
 										for ($k = 1.0; $k <= 4.0; $k += 0.01)
 										{
 											$x1 = 10;
-											for ($i = 0; $i <= $max; $i++)
+											for ($i = 0; $i <= $_POST['max']; $i++)
 											{
-												if ($i >= $min )
+												if ($i >= $_POST['min'])
 												{
 													echo '['.$k;
 													echo ', ';
 													echo ($k * $x1 * ((1000 - $x1) / 1000));
-													if ($i < $max)
+													if ($i < $_POST['max'])
 														echo '], ';
 													else
 														echo ']';
@@ -87,60 +82,115 @@
        						<?php } 
        						else 
        						{ ?>
-       						chart: 
-       						{
-								renderTo: 'container',
-								type: 'line',
-							},
-							title: 
-							{
-								text: 'Courbe d\'évolution de la population de Bombyx'
-							},
-							xAxis: 
-							{
+       							chart: 
+       							{
+									renderTo: 'container',
+									type: 'line',
+								},
 								title: 
 								{
-									text: 'Bombyx'
-								}
-							},
-							yAxis: 
-							{
-								min: 0,
-								title: 
+									text: 'Courbe du nombre d\'individu en fonction du nombre de génération'
+								},
+								xAxis: 
 								{
-									text: 'Nombre de Bombyx'
-								}
-							},
-							series: [{
-								name: 'Bombyx',
-								data: [ 10, 
-									<?php
-										$x1 = 10;
-										if (isset($_POST['form']) AND !empty($_POST['nbk'])) 
-										{
-											$k = $_POST['nbk'];
-										} 
-										else 
-										{ 
-											$k = 2.9; 
-										}
-										for ($i = 2; $i <= 100; $i++) 
-										{
-											echo ($k * ($x1) * ((1000 - ($x1)) / 1000));
-											if ($i > 2)
-												$last = ($k * ($x1) * ((1000 - ($x1)) / 1000));
-											if ($i < 100)
-												echo ', ';
-										}
-									?>
-								]
-							}]
+									title: 
+									{
+										text: 'Génération'
+									}
+								},
+								yAxis: 
+								{
+									min: 0,
+									title: 
+									{
+										text: 'Nombre de Bombyx'
+									}
+								},
+								series: [{
+									name: 'Bombyx',
+									data: [ 10, 
+										<?php
+											$x1 = 10;
+											if (isset($_POST['form']) AND !empty($_POST['nbk'])) 
+											{
+												$k = $_POST['nbk'];
+											} 
+											else 
+											{ 
+												$k = 2.9; 
+											}
+											for ($i = 2; $i <= 100; $i++) 
+											{
+												echo ($k * ($x1) * ((1000 - ($x1)) / 1000));
+												if ($i > 2)
+													$last = ($k * ($x1) * ((1000 - ($x1)) / 1000));
+												if ($i < 100)
+													echo ', ';
+											}
+										?>
+									]
+								}]
 							<?php } ?>
     					});
 					});
 			</script>
 	</head>
-	
+
 	<body>
+
+		<h1>Mathématiques: Projet 106bombyx</h1>
+
+		<table style="margin-left:33%;">
+			<tr>
+				<form method="post" action="">
+					<td>
+						Taux de croissance k : <input type="text" name="nbk" 
+						<?php 
+						if (!isset($_POST['Taux de croissance']) || $error == 1) 
+						{ 
+							echo 'value="'.$k.'"'; 	
+						} ?> />
+					</td>
+			</tr>
+			<tr>
+					<td><input type="submit" name="form" value="Calculer" /></td>
+				</form>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<form method="post" action="">
+					<td>Valeur i min : <input type="text" name="min" 
+						<?php 
+						if (isset($_POST['Value_i'])) 
+						{ 
+							echo 'value="'.$_POST['min'].'"'; 
+						} ?> />
+					</td>
+			</tr>
+			<tr>
+					<td>
+						Valeur i max : <input type="text" name="max" 
+						<?php 
+						if (isset($_POST['Value_i'])) 
+						{ 
+							echo 'value="'.$_POST['max'].'"'; 
+						} ?> />
+					</td>
+			</tr>
+			<tr>
+					<td><input type="submit" name="form2" value="Calculer" /></td>
+				</form>
+			</tr>
+		</table>
+
+		<div style="height:200px;"></div>
+		
+		<center>
+			<div id="container" style="width: 90%; height: 700px;">
+			</div>
+		</center>
+
 	</body>
 </html>
