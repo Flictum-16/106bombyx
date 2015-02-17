@@ -2,7 +2,7 @@
 	$error = 0;
 	if (isset($_POST['Value_i'])) {
 		if (empty($_POST['min']) OR empty($_POST['max'])) {
-			echo '<script type="text/javascript">alert("Une valeur est manquante.");</script>';
+			echo '<script type="text/javascript">alert("Enter the required value !!!");</script>';
 			$error = 1;
 		}
 	}
@@ -15,6 +15,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 		<script type="text/javascript" src="javascript/highcharts.js"></script>
+		<script type="text/javascript" src="javascript/musique.js"></script>
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="button.css" />
 		<link rel="icon" type="image/png" href="./12471.png">
@@ -103,7 +104,7 @@
 						},
 						series: [{
 							name: 'Bombyx',
-							color: '#0000FF',
+							color: '#00A9DB',
 							data: [ 10, 
 								<?php
 									$x = 10;
@@ -134,7 +135,11 @@
 
 	<body>
 
-		<h1>Mathématiques: Projet 106bombyx</h1>
+		<p>Mathématiques: Projet 106bombyx</p><br/>
+
+		<div style="margin:3em; text-align:center;">Changer de musique : simplement <a href="javascript:location.reload();">actualiser la page</a>.</div>
+
+		<embed src="DJ_Sona.mp3" autostart="true" loop="false" hidden="true"></embed>
 
 		<table style="margin-left:33%;">
 			<tr>
@@ -149,7 +154,7 @@
 					</td>
 			</tr>
 			<tr>
-					<td><input class="bouton bleu" type="submit" name="form" value="Visualiser" /></td>
+					<td><input id="button" class="bouton bleu" type="submit" name="form" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>
@@ -177,7 +182,7 @@
 					</td>
 			</tr>
 			<tr>
-					<td><input class="bouton bleu" type="submit" name="Value_i" value="Visualiser" /></td>
+					<td><input id="button" class="bouton bleu" type="submit" name="Value_i" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>

@@ -1,9 +1,35 @@
-body 
-{
-	height: 700px;
-	background:	url('bx.png') no-repeat;
-	background-position: right top;
+@font-face{
+    font-family: 'Police';
+    src:    url('ByTheButterfly.ttf') format('truetype'),
+            url('ByTheButterfly.otf') format('opentype'),
+            url('ByTheButterfly.eot'),
+            url('ByTheButterfly.eot?#iefix') format('embedded-opentype'),
+            url('ByTheButterfly.woff') format('woff'),
+            url('ByTheButterfly.svg#Police') format('svg');
 }
+
+body 
+{ 
+	color: #FFFFFF;
+	font-family: Police;
+	font-weight: bold;
+	height: 700px;
+	background:	url('butterfly-38191.jpg') no-repeat;
+}
+
+#container
+{
+	color: #FFFFFF;
+}
+
+p 
+{
+	font-size: 40px;
+	text-align: center;
+    font-family: "Police", Georgia, Serif;
+    text-decoration: underline;
+}
+
 
 table 
 {
@@ -14,4 +40,10 @@ table
 td
 {
 	font-size: 12px;
+}
+
+#button
+{
+	color: #FFFFFF;
+	font-size: 12px;	
 }
