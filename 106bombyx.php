@@ -1,3 +1,13 @@
+<?php
+	$error = 0;
+	if (isset($_POST['Value_i'])) {
+		if (empty($_POST['min']) OR empty($_POST['max'])) {
+			echo '<script type="text/javascript">alert("Une valeur est manquante.");</script>';
+			$error = 1;
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,16 +17,9 @@
 		<script type="text/javascript" src="js/highcharts.js"></script>
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="button.css" />
+		<link rel="icon" type="image/png" href="./12471.png">
 		<title>106 bombyx !!</title>
-		<?php
-			$error = 0;
-			if (isset($_POST['Value_i'])) {
-				if (empty($_POST['min']) OR empty($_POST['max'])) {
-					echo '<script type="text/javascript">alert("Une valeur est manquante.");</script>';
-					$error = 1;
-				}
-			}
-		?>
+
 		<script type="text/javascript"> 
 			var chart_bombyx;
 			$(document).ready(function () {
@@ -47,6 +50,7 @@
         				},
         				series: [{
            					name: 'Nbr_Bombyx',
+           					color: '#00A9DB', 
 							data: [ 
 								<?php
 									for ($k = 1.0; $k <= 4.0; $k += 0.01)
@@ -99,6 +103,7 @@
 						},
 						series: [{
 							name: 'Bombyx',
+							color: '#0000FF',
 							data: [ 10, 
 								<?php
 									$x = 10;
@@ -135,11 +140,16 @@
 			<tr>
 				<form method="post" action="">
 					<td>
-						Taux de croissance k : <input type="text" name="nbk" <?php if (!isset($_POST['Value_i']) || $error == 1) { echo 'value="'.$k.'"'; } ?> />
+						Taux de croissance k : <input type="text" name="nbk" 
+						<?php 
+						if (!isset($_POST['Value_i']) || $error == 1) 
+						{ 
+							echo 'value="'.$k.'"'; 
+						} ?> />
 					</td>
 			</tr>
 			<tr>
-					<td><input type="submit" name="form" value="Calculer" /></td>
+					<td><input type="submit" name="form" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>
@@ -148,16 +158,26 @@
 			<tr>
 				<form method="post" action="">
 					<td>
-						Valeur i min : <input type="text" name="min" <?php if (isset($_POST['Value_i'])) { echo 'value="'.$_POST['min'].'"'; } ?> />
+						Valeur i min : <input type="text" name="min" 
+						<?php 
+						if (isset($_POST['Value_i'])) 
+						{ 
+							echo 'value="'.$_POST['min'].'"'; 
+						} ?> />
 					</td>
 			</tr>
 			<tr>
 					<td>
-						Valeur i max : <input type="text" name="max" <?php if (isset($_POST['Value_i'])) { echo 'value="'.$_POST['max'].'"'; } ?> />
+						Valeur i max : <input type="text" name="max" 
+						<?php 
+						if (isset($_POST['Value_i'])) 
+						{ 
+							echo 'value="'.$_POST['max'].'"'; 
+						} ?> />
 					</td>
 			</tr>
 			<tr>
-					<td><input type="submit" name="Value_i" value="Calculer" /></td>
+					<td><input type="submit" name="Value_i" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>
