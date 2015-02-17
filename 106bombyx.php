@@ -15,7 +15,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 		<script type="text/javascript" src="javascript/highcharts.js"></script>
-		<script type="text/javascript" src="javascript/musique.js"></script>
+		<!--<script type="text/javascript" src="javascript/musique.js"></script>-->
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="button.css" />
 		<link rel="icon" type="image/png" href="./12471.png">
@@ -85,13 +85,13 @@
 						},
 						title: 
 						{
-							text: 'Courbe du nombre d\'individu en fonction du nombre de génération'
+							text: 'Courbe du nombre d\'individu en fonction du nombre de générations'
 						},
 						xAxis: 
 						{
 							title: 
 							{
-								text: 'Génération'
+								text: 'Générations'
 							}
 						},
 						yAxis: 
@@ -136,10 +136,6 @@
 	<body>
 
 		<p>Mathématiques: Projet 106bombyx</p><br/>
-
-		<div style="margin:3em; text-align:center;">Changer de musique : simplement <a href="javascript:location.reload();">actualiser la page</a>.</div>
-
-		<embed src="DJ_Sona.mp3" autostart="true" loop="false" hidden="true"></embed>
 
 		<table style="margin-left:33%;">
 			<tr>
@@ -193,5 +189,6 @@
 			<div id="container" style="width: 90%; height: 700px;"></div>
 		</center>
 
+	<!--	<div style="margin:3em; text-align:center;">Changer de musique : simplement <a href="javascript:location.reload();">actualiser la page</a>.</div>-->
 	</body>
 </html>
