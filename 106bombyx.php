@@ -149,7 +149,7 @@
 					</td>
 			</tr>
 			<tr>
-					<td><input type="submit" name="form" value="Visualiser" /></td>
+					<td><input class="bouton bleu" type="submit" name="form" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>
@@ -177,7 +177,7 @@
 					</td>
 			</tr>
 			<tr>
-					<td><input type="submit" name="Value_i" value="Visualiser" /></td>
+					<td><input class="bouton bleu" type="submit" name="Value_i" value="Visualiser" /></td>
 				</form>
 			</tr>
 		</table>
